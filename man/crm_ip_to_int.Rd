@@ -22,6 +22,7 @@ crm_ip_to_int(generator::r_ipv4_addresses(100))
 }
 \seealso{
 Other carmen: 
+\code{\link{crm_clear_cache}()},
 \code{\link{crm_locate}()}
 }
 \concept{carmen}

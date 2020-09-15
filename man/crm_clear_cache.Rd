@@ -12,3 +12,9 @@ Nothing.
 \description{
 Clear the carmen database cache
 }
+\seealso{
+Other carmen: 
+\code{\link{crm_ip_to_int}()},
+\code{\link{crm_locate}()}
+}
+\concept{carmen}

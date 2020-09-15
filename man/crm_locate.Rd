@@ -42,6 +42,7 @@ tibble(
 }
 \seealso{
 Other carmen: 
+\code{\link{crm_clear_cache}()},
 \code{\link{crm_ip_to_int}()}
 }
 \concept{carmen}
