@@ -18,8 +18,6 @@
 #' @example examples/crm_locate.R
 
 crm_locate <- function(ip, database = ip2location_lite_db1, cache = TRUE) {
-  if (database == "") {stop("Invalid database path specified.")}
-
   if (is.character(database)) {
     if (cache && database %in% names(db_cache)) {
       db <- db_cache[[database]]
@@ -33,6 +31,10 @@ crm_locate <- function(ip, database = ip2location_lite_db1, cache = TRUE) {
 
       if (cache) {db_cache[[database]] <- db}
     }
+  } else if (is.data.frame(database)) {
+    db <- database
+  } else {
+    stop("`database` must be a data.frame or the path to a .csv file.")
   }
 
   if (is.character(ip)) {ip <- crm_ip_to_int(ip)}
