@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 library(carmen)
 # remotes::install_github("GuangchuangYu/badger")
 library(badger)
+library(dplyr)
 ```
 
 # carmen
@@ -26,7 +27,7 @@ library(badger)
 `r badge_lifecycle("experimental")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
-`r badge_codecov()`
+`r # badge_codecov()`
 `r # badge_dependencies()`
 <!-- badges: end -->
 
@@ -58,8 +59,6 @@ crm_locate("130.191.166.222")
 **carmen** can be used within `dplyr::mutate()`.
 
 ```{r}
-library(dplyr)
-
 tibble(
   id   = seq_len(100),
   name = generator::r_full_names(100),
