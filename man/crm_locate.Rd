@@ -8,7 +8,7 @@ This site or product includes IP2Location LITE data available from
 \url{https://lite.ip2location.com}.
 }
 \usage{
-crm_locate(ip, database = ip2location_lite_db1, cache = TRUE)
+crm_locate(ip, database = carmen::ip2location_lite_db1, cache = TRUE)
 }
 \arguments{
 \item{ip}{A vector of IP addresses. Either \link{character}
