@@ -74,4 +74,8 @@ This allows it to run much faster than alternatives like [ip2location](https://g
 
 ---
 
+Icon adapted from [Ctrlastudio](https://www.flaticon.com/authors/ctrlastudio) from [www.flaticon.com](https://www.flaticon.com/).
+
+Hex sticker fonts are [Source Sans Pro](https://github.com/adobe-fonts/source-sans-pro) by [Adobe](https://www.adobe.com).
+
 Please note that **carmen** is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

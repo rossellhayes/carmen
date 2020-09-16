@@ -57,18 +57,18 @@ tibble(
 ) %>%
   mutate(crm_locate(ip))
 #> # A tibble: 100 x 5
-#>       id name                ip             country_code country_name           
-#>    <int> <chr>               <chr>          <chr>        <chr>                  
-#>  1     1 Denisse Ebert       124.126.52.99  CN           China                  
-#>  2     2 Micheal Schmeler    47.59.89.19    ES           Spain                  
-#>  3     3 Nathanial Altenwer~ 235.162.136.1~ -            -                      
-#>  4     4 August Brown        213.55.195.248 CH           Switzerland            
-#>  5     5 Eldon Emmerich      176.227.114.1~ TR           Turkey                 
-#>  6     6 Tanisha Russel      206.251.166.1~ US           United States of Ameri~
-#>  7     7 Mervin Funk         10.30.246.182  -            -                      
-#>  8     8 Dale Lesch          36.246.190.208 JP           Japan                  
-#>  9     9 Leif Conroy         188.254.198.1~ BG           Bulgaria               
-#> 10    10 Homer Wuckert       106.189.23.168 JP           Japan                  
+#>       id name               ip             country_code country_name            
+#>    <int> <chr>              <chr>          <chr>        <chr>                   
+#>  1     1 Gabriel Breitenbe~ 213.176.122.1~ IR           Iran (Islamic Republic ~
+#>  2     2 Elvia Sipes        101.34.181.209 CN           China                   
+#>  3     3 Lacy Strosin       147.244.46.196 US           United States of America
+#>  4     4 Chae Heathcote     108.213.131.24 US           United States of America
+#>  5     5 Arla Luettgen      115.246.7.197  IN           India                   
+#>  6     6 Frankie Witting    121.233.83.107 CN           China                   
+#>  7     7 Broderick Ward     168.109.36.39  US           United States of America
+#>  8     8 Clemente Hyatt     239.194.73.65  -            -                       
+#>  9     9 Maegan Hilpert     81.74.212.67   IT           Italy                   
+#> 10    10 Un Champlin        141.242.174.2~ US           United States of America
 #> # ... with 90 more rows
 ```
 
@@ -79,6 +79,14 @@ This allows it to run much faster than alternatives like
 [ip2location](https://github.com/ip2location/ip2location-r).
 
 -----
+
+Icon adapted from
+[Ctrlastudio](https://www.flaticon.com/authors/ctrlastudio) from
+[www.flaticon.com](https://www.flaticon.com/).
+
+Hex sticker fonts are [Source Sans
+Pro](https://github.com/adobe-fonts/source-sans-pro) by
+[Adobe](https://www.adobe.com).
 
 Please note that **carmen** is released with a [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
