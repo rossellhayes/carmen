@@ -22,7 +22,7 @@ crm_locate <- function(ip, database = ip2location_lite_db1, cache = TRUE) {
     if (cache && database %in% names(db_cache)) {
       db <- db_cache[[database]]
     } else {
-      db <- read.csv(database, header = FALSE, stringsAsFactors = FALSE)
+      db <- utils::read.csv(database, header = FALSE, stringsAsFactors = FALSE)
 
       names(db) <- c(
         "ip_from", "ip_to", "country_code", "country_name", "region_name",
