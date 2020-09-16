@@ -17,7 +17,9 @@
 #' @export
 #' @example examples/crm_locate.R
 
-crm_locate <- function(ip, database = ip2location_lite_db1, cache = TRUE) {
+crm_locate <- function(
+  ip, database = carmen::ip2location_lite_db1, cache = TRUE
+) {
   if (is.character(database)) {
     if (cache && database %in% names(db_cache)) {
       db <- db_cache[[database]]
