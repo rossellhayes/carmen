@@ -6,6 +6,8 @@
 \alias{carmen-package}
 \title{carmen: Where in the World is this IP Address?}
 \description{
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
 What the package does (one paragraph).
 }
 \seealso{

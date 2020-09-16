@@ -18,7 +18,7 @@ library(badger)
 library(dplyr)
 ```
 
-# carmen
+# carmen <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 > Where in the world is this IP address?
 

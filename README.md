@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# carmen
+# carmen <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 > Where in the world is this IP address?
 
@@ -57,18 +57,18 @@ tibble(
 ) %>%
   mutate(crm_locate(ip))
 #> # A tibble: 100 x 5
-#>       id name           ip              country_code country_name            
-#>    <int> <chr>          <chr>           <chr>        <chr>                   
-#>  1     1 Nilsa Ferry    211.121.130.199 JP           Japan                   
-#>  2     2 Lowell Carroll 42.179.179.50   CN           China                   
-#>  3     3 Nita Cremin    134.58.174.129  BE           Belgium                 
-#>  4     4 Alberto Daniel 242.19.228.29   -            -                       
-#>  5     5 Adeline Willms 251.232.231.192 -            -                       
-#>  6     6 Kattie Beier   61.206.112.81   JP           Japan                   
-#>  7     7 Adolfo Kirlin  252.219.128.50  -            -                       
-#>  8     8 Beau Donnelly  18.21.74.39     US           United States of America
-#>  9     9 Veta Leuschke  215.172.194.79  US           United States of America
-#> 10    10 Korey Murray   22.149.92.179   US           United States of America
+#>       id name                ip             country_code country_name           
+#>    <int> <chr>               <chr>          <chr>        <chr>                  
+#>  1     1 Denisse Ebert       124.126.52.99  CN           China                  
+#>  2     2 Micheal Schmeler    47.59.89.19    ES           Spain                  
+#>  3     3 Nathanial Altenwer~ 235.162.136.1~ -            -                      
+#>  4     4 August Brown        213.55.195.248 CH           Switzerland            
+#>  5     5 Eldon Emmerich      176.227.114.1~ TR           Turkey                 
+#>  6     6 Tanisha Russel      206.251.166.1~ US           United States of Ameri~
+#>  7     7 Mervin Funk         10.30.246.182  -            -                      
+#>  8     8 Dale Lesch          36.246.190.208 JP           Japan                  
+#>  9     9 Leif Conroy         188.254.198.1~ BG           Bulgaria               
+#> 10    10 Homer Wuckert       106.189.23.168 JP           Japan                  
 #> # ... with 90 more rows
 ```
 
