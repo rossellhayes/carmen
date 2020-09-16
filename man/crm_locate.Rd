@@ -5,7 +5,7 @@
 \title{Where in the world is this IP address?}
 \source{
 This site or product includes IP2Location LITE data available from
-\link{https://lite.ip2location.com}.
+\url{https://lite.ip2location.com}.
 }
 \usage{
 crm_locate(ip, database = ip2location_lite_db1, cache = TRUE)

@@ -11,7 +11,7 @@
 #' @return A [data.frame] with a row of location information for each element
 #'   of `ip`.
 #' @source This site or product includes IP2Location LITE data available from
-#'   [https://lite.ip2location.com].
+#'   [https://lite.ip2location.com](https://lite.ip2location.com).
 #' @family carmen
 #'
 #' @export
