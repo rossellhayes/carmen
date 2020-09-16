@@ -6,3 +6,4 @@ ip2location_lite_db1 <- read_csv(
 )
 
 usethis::use_data(ip2location_lite_db1, overwrite = TRUE)
+tools::resaveRdaFiles("data")
