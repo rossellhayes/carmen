@@ -42,7 +42,7 @@ crm_locate <- function(
   if (is.character(ip)) {ip <- crm_ip_to_int(ip)}
   index <- db_index(ip, db$ip_from)
 
-  db[index, 3:ncol(db)]
+  db[index, 3:ncol(db), drop = FALSE]
 }
 
 db_cache <- new.env()
