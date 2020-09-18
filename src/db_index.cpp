@@ -2,9 +2,17 @@
 using namespace Rcpp;
 
 int single_db_index(const double ip, const NumericVector ip_from) {
-  NumericVector ip_less = ip_from[ip_from <= ip];
-  int ip_length         = ip_less.size();
-  return ip_length;
+  int p = floor(ip_from.size() / 9);
+
+  int i = p * (
+    (ip_from[8 * p] < ip) + (ip_from[7 * p] < ip) + (ip_from[6 * p] < ip) +
+    (ip_from[5 * p] < ip) + (ip_from[4 * p] < ip) + (ip_from[3 * p] < ip) +
+    (ip_from[2 * p] < ip) + (ip_from[p] < ip)
+  );
+
+  do {i++;} while ((ip_from[i] < ip) && i < ip_from.size());
+
+  return i;
 }
 
 // [[Rcpp::export]]
