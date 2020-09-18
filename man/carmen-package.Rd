@@ -8,7 +8,9 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-What the package does (one paragraph).
+Finds the geographic areas associated with a vector
+    of IPv4 addresses.  Uses a local database and vectorized R and C++
+    code to provide significant speed imrovements over similar options.
 }
 \seealso{
 Useful links:

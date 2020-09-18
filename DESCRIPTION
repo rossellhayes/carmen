@@ -7,7 +7,9 @@ Authors@R:
            role = c("aut", "cre", "cph"),
            email = "alexander@rossellhayes.com",
            comment = c(ORCID = "0000-0001-9412-0457"))
-Description: What the package does (one paragraph).
+Description: Finds the geographic areas associated with a vector
+    of IPv4 addresses.  Uses a local database and vectorized R and C++
+    code to provide significant speed imrovements over similar options.
 License: MIT + file LICENSE
 URL: https://github.com/rossellhayes/carmen
 BugReports: https://github.com/rossellhayes/carmen/issues
@@ -18,7 +20,8 @@ Imports:
     utils
 Suggests: 
     dplyr,
-    generator
+    generator,
+    testthat
 LinkingTo: 
     Rcpp
 Encoding: UTF-8
