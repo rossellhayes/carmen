@@ -8,9 +8,7 @@
 #' @return A [numeric] vector of integer IP addresses.
 #' @family carmen
 #' @export
-#' @examples
-#' crm_ip_to_int("130.191.166.222")
-#' crm_ip_to_int(generator::r_ipv4_addresses(100))
+#' @example examples/crm_ip_to_int.R
 
 crm_ip_to_int <- function(ip) {
   stopifnot(is.character(ip))
