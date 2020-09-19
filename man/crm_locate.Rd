@@ -30,6 +30,7 @@ Where in the world is this IP address?
 }
 \examples{
 crm_locate("130.191.166.222")
+crm_locate(c("130.191.166.222", "190.115.7.226", "201.248.64.43"))
 
 library(dplyr)
 

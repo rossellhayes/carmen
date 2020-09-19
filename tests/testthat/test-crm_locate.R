@@ -9,12 +9,12 @@ test_that("scalar crm_locate()", {
 
 test_that("vector crm_locate()", {
   expect_equivalent(
-    crm_locate(c("130.191.166.222", "200.188.19.15", "201.248.64.43")),
+    crm_locate(c("130.191.166.222", "190.115.7.226", "201.248.64.43")),
     dplyr::tibble(
-      country_code = c("US", "MX", "VE"),
+      country_code = c("US", "GT", "VE"),
       country_name = c(
         "United States of America",
-        "Mexico",
+        "Guatemala",
         "Venezuela (Bolivarian Republic of)"
       )
     )
