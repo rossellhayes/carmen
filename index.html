@@ -119,25 +119,51 @@
 ) <span class="op">%&gt;%</span>
   <span class="fu">mutate</span>(<span class="fu"><a href="reference/crm_locate.html">crm_locate</a></span>(<span class="kw">ip</span>))
 <span class="co">#&gt; # A tibble: 100 x 5</span>
-<span class="co">#&gt;       id name               ip             country_code country_name            </span>
-<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;              &lt;chr&gt;          &lt;chr&gt;        &lt;chr&gt;                   </span>
-<span class="co">#&gt;  1     1 Gabriel Breitenbe~ 213.176.122.1~ IR           Iran (Islamic Republic ~</span>
-<span class="co">#&gt;  2     2 Elvia Sipes        101.34.181.209 CN           China                   </span>
-<span class="co">#&gt;  3     3 Lacy Strosin       147.244.46.196 US           United States of America</span>
-<span class="co">#&gt;  4     4 Chae Heathcote     108.213.131.24 US           United States of America</span>
-<span class="co">#&gt;  5     5 Arla Luettgen      115.246.7.197  IN           India                   </span>
-<span class="co">#&gt;  6     6 Frankie Witting    121.233.83.107 CN           China                   </span>
-<span class="co">#&gt;  7     7 Broderick Ward     168.109.36.39  US           United States of America</span>
-<span class="co">#&gt;  8     8 Clemente Hyatt     239.194.73.65  -            -                       </span>
-<span class="co">#&gt;  9     9 Maegan Hilpert     81.74.212.67   IT           Italy                   </span>
-<span class="co">#&gt; 10    10 Un Champlin        141.242.174.2~ US           United States of America</span>
+<span class="co">#&gt;       id name           ip              country_code country_name              </span>
+<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;        &lt;chr&gt;                     </span>
+<span class="co">#&gt;  1     1 Venus Anderson 200.229.30.56   BR           Brazil                    </span>
+<span class="co">#&gt;  2     2 Maryanne Kub   238.79.29.122   -            -                         </span>
+<span class="co">#&gt;  3     3 Eliana Kunde   134.42.104.111  US           United States of America  </span>
+<span class="co">#&gt;  4     4 Yuki Buckridge 29.206.69.8     US           United States of America  </span>
+<span class="co">#&gt;  5     5 Willy Hilpert  15.238.80.103   US           United States of America  </span>
+<span class="co">#&gt;  6     6 Ted Corkery    239.175.232.174 -            -                         </span>
+<span class="co">#&gt;  7     7 Almeta Koepp   33.117.92.22    US           United States of America  </span>
+<span class="co">#&gt;  8     8 Allyson Pouros 50.220.84.254   US           United States of America  </span>
+<span class="co">#&gt;  9     9 Jeri Gulgowski 219.91.83.200   TW           Taiwan (Province of China)</span>
+<span class="co">#&gt; 10    10 Leonard Willms 236.35.162.189  -            -                         </span>
 <span class="co">#&gt; # ... with 90 more rows</span>
 </pre></div>
 </div>
 <div id="advantages-" class="section level2">
 <h2 class="hasAnchor">
 <a href="#advantages-" class="anchor"></a>Advantages 🚀</h2>
-<p><strong>carmen</strong> is written using vectorized R code and C++ code with Rcpp. This allows it to run much faster than alternatives like <a href="https://github.com/ip2location/ip2location-r">ip2location</a>.</p>
+<p><strong>carmen</strong> is written using a local database and vectorized R and C++ code. This allows it to run much faster than alternatives like <a href="https://github.com/MAHDLab/rIP">rIP</a>, <a href="https://github.com/ip2location/ip2location-r">ip2location</a> and <a href="https://github.com/Ironholds/rgeolocate">rgeolocate</a>.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="kw">ips</span> <span class="op">&lt;-</span> <span class="kw">generator</span>::<span class="fu"><a href="https://rdrr.io/pkg/generator/man/r_ipv4_addresses.html">r_ipv4_addresses</a></span>(<span class="fl">20</span>)
+
+<span class="kw">bench</span>::<span class="fu">mark</span>(
+  <span class="fu"><a href="reference/crm_locate.html">crm_locate</a></span>(<span class="kw">ips</span>),
+  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="kw">ips</span>, <span class="kw">rIP</span>::<span class="kw">iphub_check</span>),
+  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="kw">ips</span>, <span class="kw">ip2location</span>::<span class="kw">get_all</span>),
+  <span class="kw">rgeolocate</span>::<span class="fu">ip2location</span>(<span class="kw">ips</span>, <span class="kw">ip2location</span>),
+  <span class="kw">rgeolocate</span>::<span class="fu">maxmind</span>(<span class="kw">ips</span>, <span class="kw">maxmind</span>),
+  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="kw">ips</span>, <span class="kw">rgeolocate</span>::<span class="kw">ip_info</span>),
+  <span class="kw">rgeolocate</span>::<span class="fu">ip_api</span>(<span class="kw">ips</span>),
+  check = <span class="fl">FALSE</span>
+)
+<span class="co">#&gt; Warning: Some expressions had a GC in every iteration; so filtering is disabled.</span>
+<span class="co">#&gt; # A tibble: 7 x 6</span>
+<span class="co">#&gt;   expression                                     min   median `itr/sec`</span>
+<span class="co">#&gt;   &lt;bch:expr&gt;                                &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 crm_locate(ips)                            271.1us  384.4us  2074.   </span>
+<span class="co">#&gt; 2 lapply(ips, rIP::iphub_check)                3.48s    3.48s     0.287</span>
+<span class="co">#&gt; 3 lapply(ips, ip2location::get_all)         101.02ms 111.72ms     9.04 </span>
+<span class="co">#&gt; 4 rgeolocate::ip2location(ips, ip2location)  553.9us  747.1us  1213.   </span>
+<span class="co">#&gt; 5 rgeolocate::maxmind(ips, maxmind)          384.3us  483.8us  1977.   </span>
+<span class="co">#&gt; 6 lapply(ips, rgeolocate::ip_info)             1.81s    1.81s     0.551</span>
+<span class="co">#&gt; 7 rgeolocate::ip_api(ips)                   586.66ms 586.66ms     1.70 </span>
+<span class="co">#&gt; # ... with 2 more variables: mem_alloc &lt;bch:byt&gt;, `gc/sec` &lt;dbl&gt;</span>
+</pre></div>
 <hr>
 <p>Icon adapted from <a href="https://www.flaticon.com/authors/ctrlastudio">Ctrlastudio</a> from <a href="https://www.flaticon.com/">www.flaticon.com</a>.</p>
 <p>Hex sticker fonts are <a href="https://github.com/adobe-fonts/source-sans-pro">Source Sans Pro</a> by <a href="https://www.adobe.com">Adobe</a>.</p>
@@ -182,6 +208,7 @@
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
 <li><a href="https://github.com/rossellhayes/carmen/actions"><img src="https://github.com/rossellhayes/carmen/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/rossellhayes/carmen"><img src="https://codecov.io/gh/rossellhayes/carmen/branch/master/graph/badge.svg"></a></li>
 </ul>
 </div>
 </div>
