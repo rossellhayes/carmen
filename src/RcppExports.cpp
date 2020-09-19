@@ -5,6 +5,18 @@
 
 using namespace Rcpp;
 
+// single_db_index
+int single_db_index(const double ip, const NumericVector ip_from);
+RcppExport SEXP _carmen_single_db_index(SEXP ipSEXP, SEXP ip_fromSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const double >::type ip(ipSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type ip_from(ip_fromSEXP);
+    rcpp_result_gen = Rcpp::wrap(single_db_index(ip, ip_from));
+    return rcpp_result_gen;
+END_RCPP
+}
 // db_index
 IntegerVector db_index(const NumericVector ip, const NumericVector ip_from);
 RcppExport SEXP _carmen_db_index(SEXP ipSEXP, SEXP ip_fromSEXP) {
@@ -19,6 +31,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_carmen_single_db_index", (DL_FUNC) &_carmen_single_db_index, 2},
     {"_carmen_db_index", (DL_FUNC) &_carmen_db_index, 2},
     {NULL, NULL, 0}
 };

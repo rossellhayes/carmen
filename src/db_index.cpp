@@ -1,6 +1,7 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+// [[Rcpp::export]]
 int single_db_index(const double ip, const NumericVector ip_from) {
   if (ip_from[ip_from.size() - 1] <= ip) {return ip_from.size();}
 
