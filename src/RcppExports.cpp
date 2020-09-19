@@ -6,7 +6,7 @@
 using namespace Rcpp;
 
 // single_db_index
-int single_db_index(const double ip, const NumericVector ip_from);
+long single_db_index(const double ip, const NumericVector ip_from);
 RcppExport SEXP _carmen_single_db_index(SEXP ipSEXP, SEXP ip_fromSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
