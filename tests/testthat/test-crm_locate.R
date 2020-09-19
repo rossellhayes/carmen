@@ -40,10 +40,10 @@ test_that("external db", {
 
   expect_equivalent(
     crm_locate(
-      c("0.0.0.0", "255.255.255.255"),
+      c("0.0.0.0", "1.1.1.1", "128.128.128.128", "255.255.255.255"),
       system.file("extdata", "test_db.csv", package = "carmen")
     ),
-    dplyr::tibble(country_code = c("LO", "HI"))
+    dplyr::tibble(country_code = c("MN", "LO", "HI", "MX"))
   )
 
   crm_clear_cache()
