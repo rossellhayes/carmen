@@ -35,7 +35,7 @@ long single_db_index(const double ip, const NumericVector ip_from) {
 IntegerVector db_index(const NumericVector ip, const NumericVector ip_from) {
   IntegerVector result(ip.size());
 
-  for (int i; i < ip.size(); i++) {
+  for (int i = 0; i < ip.size(); i++) {
     result[i] = single_db_index(ip[i], ip_from);
   }
 
