@@ -22,10 +22,10 @@ test_that("db_index() at boundaries", {
 })
 
 test_that("single_db_index() at boundaries", {
-  expect_equal(db_index(0,        ip2location_lite_db1$ip_from), 1)
-  expect_equal(db_index(16777215, ip2location_lite_db1$ip_from), 1)
-  expect_equal(db_index(16777216, ip2location_lite_db1$ip_from), 2)
-  expect_equal(db_index(16777471, ip2location_lite_db1$ip_from), 2)
-  expect_equal(db_index(16777472, ip2location_lite_db1$ip_from), 3)
-  expect_equal(db_index(16778239, ip2location_lite_db1$ip_from), 3)
+  expect_equal(single_db_index(0,        ip2location_lite_db1$ip_from), 1)
+  expect_equal(single_db_index(16777215, ip2location_lite_db1$ip_from), 1)
+  expect_equal(single_db_index(16777216, ip2location_lite_db1$ip_from), 2)
+  expect_equal(single_db_index(16777471, ip2location_lite_db1$ip_from), 2)
+  expect_equal(single_db_index(16777472, ip2location_lite_db1$ip_from), 3)
+  expect_equal(single_db_index(16778239, ip2location_lite_db1$ip_from), 3)
 })
