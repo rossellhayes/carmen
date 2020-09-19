@@ -25,7 +25,7 @@ int single_db_index(const double ip, const NumericVector ip_from) {
     (ip_from[ 3 * p] < ip) + (ip_from[ 2 * p] < ip) + (ip_from[     p] < ip)
   );
 
-  do {i++;} while (ip_from[i] < ip);
+  do {i++;} while (ip_from[i] <= ip);
 
   return i;
 }
