@@ -2,7 +2,7 @@
 using namespace Rcpp;
 
 int single_db_index(const double ip, const NumericVector ip_from) {
-  if (ip_from[ip_from.size() - 1] < ip) {return ip_from.size();}
+  if (ip_from[ip_from.size() - 1] <= ip) {return ip_from.size();}
 
   int p = floor(ip_from.size() / 49);
 
