@@ -149,7 +149,8 @@ integer overflows.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>crm_ip_to_int</span>(<span class='st'>"130.191.166.222"</span>)
-</div><div class='output co'>#&gt; [1] 2193598174</div><div class='input'><span class='fu'>crm_ip_to_int</span>(<span class='kw'>generator</span>::<span class='fu'><a href='https://rdrr.io/pkg/generator/man/r_ipv4_addresses.html'>r_ipv4_addresses</a></span>(<span class='fl'>100</span>))
+</div><div class='output co'>#&gt; [1] 2193598174</div><div class='input'><span class='fu'>crm_ip_to_int</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"130.191.166.222"</span>, <span class='st'>"190.115.7.226"</span>, <span class='st'>"201.248.64.43"</span>))
+</div><div class='output co'>#&gt; [1] 2193598174 3195209698 3388489771</div><div class='input'><span class='fu'>crm_ip_to_int</span>(<span class='kw'>generator</span>::<span class='fu'><a href='https://rdrr.io/pkg/generator/man/r_ipv4_addresses.html'>r_ipv4_addresses</a></span>(<span class='fl'>100</span>))
 </div><div class='output co'>#&gt;   [1] 2906811443 2540078193 3429323736 1072445608 3843699934 1715255766
 #&gt;   [7] 1878430152  789501838 2667913027 3303529746 3866342639 3385653391
 #&gt;  [13] 3320957532   90511520 4279351164  403556843 1340496152 1298205351
