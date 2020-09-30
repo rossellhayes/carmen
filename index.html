@@ -96,28 +96,26 @@
 <p>You can install the development version of <strong>carmen</strong> from <a href="https://github.com/rossellhayes/carmen">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="co"># install.packages("remotes")</span>
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"rossellhayes/carmen"</span>)
-</pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"rossellhayes/carmen"</span><span class="op">)</span></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p><strong>carmen</strong> can locate a vector of IP addresses.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="reference/crm_locate.html">crm_locate</a></span>(<span class="st">"130.191.166.222"</span>)
+<span class="fu"><a href="reference/crm_locate.html">crm_locate</a></span><span class="op">(</span><span class="st">"130.191.166.222"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 2</span>
 <span class="co">#&gt;   country_code country_name            </span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;                   </span>
-<span class="co">#&gt; 1 US           United States of America</span>
-</pre></div>
+<span class="co">#&gt; 1 US           United States of America</span></pre></div>
 <p><strong>carmen</strong> can be used within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu">tibble</span>(
-  id   = <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">100</span>),
-  name = <span class="kw">generator</span>::<span class="fu"><a href="https://rdrr.io/pkg/generator/man/r_full_names.html">r_full_names</a></span>(<span class="fl">100</span>),
-  ip   = <span class="kw">generator</span>::<span class="fu"><a href="https://rdrr.io/pkg/generator/man/r_ipv4_addresses.html">r_ipv4_addresses</a></span>(<span class="fl">100</span>)
-) <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span>(<span class="fu"><a href="reference/crm_locate.html">crm_locate</a></span>(<span class="kw">ip</span>))
+<span class="fu">tibble</span><span class="op">(</span>
+  id   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>,
+  name <span class="op">=</span> <span class="fu">generator</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/generator/man/r_full_names.html">r_full_names</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>,
+  ip   <span class="op">=</span> <span class="fu">generator</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/generator/man/r_ipv4_addresses.html">r_ipv4_addresses</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
+<span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span><span class="fu"><a href="reference/crm_locate.html">crm_locate</a></span><span class="op">(</span><span class="va">ip</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 100 x 5</span>
 <span class="co">#&gt;       id name           ip              country_code country_name              </span>
 <span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;        &lt;chr&gt;                     </span>
@@ -131,26 +129,25 @@
 <span class="co">#&gt;  8     8 Allyson Pouros 50.220.84.254   US           United States of America  </span>
 <span class="co">#&gt;  9     9 Jeri Gulgowski 219.91.83.200   TW           Taiwan (Province of China)</span>
 <span class="co">#&gt; 10    10 Leonard Willms 236.35.162.189  -            -                         </span>
-<span class="co">#&gt; # ... with 90 more rows</span>
-</pre></div>
+<span class="co">#&gt; # ... with 90 more rows</span></pre></div>
 </div>
 <div id="advantages-" class="section level2">
 <h2 class="hasAnchor">
 <a href="#advantages-" class="anchor"></a>Advantages 🚀</h2>
 <p><strong>carmen</strong> is written using a local database and vectorized R and C++ code. This allows it to run much faster than alternatives like <a href="https://github.com/MAHDLab/rIP">rIP</a>, <a href="https://github.com/ip2location/ip2location-r">ip2location</a> and <a href="https://github.com/Ironholds/rgeolocate">rgeolocate</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw">ips</span> <span class="op">&lt;-</span> <span class="kw">generator</span>::<span class="fu"><a href="https://rdrr.io/pkg/generator/man/r_ipv4_addresses.html">r_ipv4_addresses</a></span>(<span class="fl">20</span>)
+<span class="va">ips</span> <span class="op">&lt;-</span> <span class="fu">generator</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/generator/man/r_ipv4_addresses.html">r_ipv4_addresses</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>
 
-<span class="kw">bench</span>::<span class="fu">mark</span>(
-  <span class="fu"><a href="reference/crm_locate.html">crm_locate</a></span>(<span class="kw">ips</span>),
-  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="kw">ips</span>, <span class="kw">rIP</span>::<span class="kw">iphub_check</span>),
-  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="kw">ips</span>, <span class="kw">ip2location</span>::<span class="kw">get_all</span>),
-  <span class="kw">rgeolocate</span>::<span class="fu">ip2location</span>(<span class="kw">ips</span>, <span class="kw">ip2location</span>),
-  <span class="kw">rgeolocate</span>::<span class="fu">maxmind</span>(<span class="kw">ips</span>, <span class="kw">maxmind</span>),
-  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(<span class="kw">ips</span>, <span class="kw">rgeolocate</span>::<span class="kw">ip_info</span>),
-  <span class="kw">rgeolocate</span>::<span class="fu">ip_api</span>(<span class="kw">ips</span>),
-  check = <span class="fl">FALSE</span>
-)
+<span class="fu">bench</span><span class="fu">::</span><span class="fu">mark</span><span class="op">(</span>
+  <span class="fu"><a href="reference/crm_locate.html">crm_locate</a></span><span class="op">(</span><span class="va">ips</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">ips</span>, <span class="fu">rIP</span><span class="fu">::</span><span class="va">iphub_check</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">ips</span>, <span class="fu">ip2location</span><span class="fu">::</span><span class="va">get_all</span><span class="op">)</span>,
+  <span class="fu">rgeolocate</span><span class="fu">::</span><span class="fu">ip2location</span><span class="op">(</span><span class="va">ips</span>, <span class="va">ip2location</span><span class="op">)</span>,
+  <span class="fu">rgeolocate</span><span class="fu">::</span><span class="fu">maxmind</span><span class="op">(</span><span class="va">ips</span>, <span class="va">maxmind</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">ips</span>, <span class="fu">rgeolocate</span><span class="fu">::</span><span class="va">ip_info</span><span class="op">)</span>,
+  <span class="fu">rgeolocate</span><span class="fu">::</span><span class="fu">ip_api</span><span class="op">(</span><span class="va">ips</span><span class="op">)</span>,
+  check <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
 <span class="co">#&gt; Warning: Some expressions had a GC in every iteration; so filtering is disabled.</span>
 <span class="co">#&gt; # A tibble: 7 x 6</span>
 <span class="co">#&gt;   expression                                     min   median `itr/sec`</span>
@@ -162,8 +159,7 @@
 <span class="co">#&gt; 5 rgeolocate::maxmind(ips, maxmind)          384.3us  483.8us  1977.   </span>
 <span class="co">#&gt; 6 lapply(ips, rgeolocate::ip_info)             1.81s    1.81s     0.551</span>
 <span class="co">#&gt; 7 rgeolocate::ip_api(ips)                   586.66ms 586.66ms     1.70 </span>
-<span class="co">#&gt; # ... with 2 more variables: mem_alloc &lt;bch:byt&gt;, `gc/sec` &lt;dbl&gt;</span>
-</pre></div>
+<span class="co">#&gt; # ... with 2 more variables: mem_alloc &lt;bch:byt&gt;, `gc/sec` &lt;dbl&gt;</span></pre></div>
 <hr>
 <p>Icon adapted from <a href="https://www.flaticon.com/authors/ctrlastudio">Ctrlastudio</a> from <a href="https://www.flaticon.com/">www.flaticon.com</a>.</p>
 <p>Hex sticker fonts are <a href="https://github.com/adobe-fonts/source-sans-pro">Source Sans Pro</a> by <a href="https://www.adobe.com">Adobe</a>.</p>
