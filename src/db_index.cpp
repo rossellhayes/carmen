@@ -5,30 +5,23 @@ using namespace Rcpp;
 long single_db_index(const double ip, const NumericVector ip_from) {
   if (ip_from[ip_from.size() - 1] <= ip) {return ip_from.size();}
 
-  long p = floor(ip_from.size() / 49);
+  long start = 0;
+  long end   = ip_from.size();
+  long mid   = 0;
+  long ans   = 0;
 
-  long i = p * (
-    (ip_from[48 * p] < ip) + (ip_from[47 * p] < ip) + (ip_from[46 * p] < ip) +
-    (ip_from[45 * p] < ip) + (ip_from[44 * p] < ip) + (ip_from[43 * p] < ip) +
-    (ip_from[42 * p] < ip) + (ip_from[41 * p] < ip) + (ip_from[40 * p] < ip) +
-    (ip_from[39 * p] < ip) + (ip_from[38 * p] < ip) + (ip_from[37 * p] < ip) +
-    (ip_from[36 * p] < ip) + (ip_from[35 * p] < ip) + (ip_from[34 * p] < ip) +
-    (ip_from[33 * p] < ip) + (ip_from[32 * p] < ip) + (ip_from[31 * p] < ip) +
-    (ip_from[30 * p] < ip) + (ip_from[29 * p] < ip) + (ip_from[28 * p] < ip) +
-    (ip_from[27 * p] < ip) + (ip_from[26 * p] < ip) + (ip_from[25 * p] < ip) +
-    (ip_from[24 * p] < ip) + (ip_from[23 * p] < ip) + (ip_from[22 * p] < ip) +
-    (ip_from[21 * p] < ip) + (ip_from[20 * p] < ip) + (ip_from[19 * p] < ip) +
-    (ip_from[18 * p] < ip) + (ip_from[17 * p] < ip) + (ip_from[16 * p] < ip) +
-    (ip_from[15 * p] < ip) + (ip_from[14 * p] < ip) + (ip_from[13 * p] < ip) +
-    (ip_from[12 * p] < ip) + (ip_from[11 * p] < ip) + (ip_from[10 * p] < ip) +
-    (ip_from[ 9 * p] < ip) + (ip_from[ 8 * p] < ip) + (ip_from[ 7 * p] < ip) +
-    (ip_from[ 6 * p] < ip) + (ip_from[ 5 * p] < ip) + (ip_from[ 4 * p] < ip) +
-    (ip_from[ 3 * p] < ip) + (ip_from[ 2 * p] < ip) + (ip_from[     p] < ip)
-  );
+  while (start <= end) {
+    mid = floor((start + end) / 2);
 
-  do {i++;} while (ip_from[i] <= ip);
+    if (ip_from[mid] <= ip) {
+      start = mid + 1;
+    } else {
+      ans = mid;
+      end = mid - 1;
+    }
+  }
 
-  return i;
+  return ans;
 }
 
 // [[Rcpp::export]]
